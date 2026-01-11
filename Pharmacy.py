@@ -13,15 +13,17 @@ st.set_page_config(page_title="Antibiotic Coverage Search", page_icon="💊")
 def load_data():
     # Replace 'antibiotics_data.xlsx' with your actual file name
     # We assume index_col=0 so the first column (Bacteria names) becomes the index
-    try:
-        df = pd.read_excel('ABO data.xlsx', index_col=0)
+    try: 
+        df = pd.read_excel(r"C:\Users\Scott\Downloads\ABO program\ABO_data.xlsx", index_col=0)
         
         # Clean the data: replace NaN (empty cells) with a placeholder if needed,
         # or we will just filter them out later.
         return df
     except FileNotFoundError:
         st.error("File 'antibiotics_data.xlsx' not found. Please ensure the file is in the same folder.")
+        print("Error!!!")
         return pd.DataFrame() # Return empty if failed
+        
 
 df = load_data()
 
